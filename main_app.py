@@ -31,7 +31,7 @@ def get_json_form(subred):
         int)  # convert the emotion only columns to int so that it shows up right as a json
     df_json = df1[df1['subred'] == subred][relevant_col].to_json(orient='records')
 
-    return df_json[1:-1]  # get rid of the python []
+    return df_json[1:-1]  # get rid of the [] characters
 
 
 @app.route('/reddit_mood/rest/get_emotion_aggregations/<string:subred>', methods=['GET'])
