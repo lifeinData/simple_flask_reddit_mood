@@ -1,19 +1,18 @@
 from flask import Flask, request, abort
-from flask_restful import Resource, Api
-from json import dumps
 import Constants.SQL_QUERIES as query_constants
 import pandas as pd
 import sys
 import REST.aggregations_by_sub.Get
 
-sys.path.insert(0, 'C:/Python Projects/reddit_mood_bot')
-from database_scripts import db_execution_objs as postsql_db_funcs
+#TODO: Make into environment variable
+sys.path.append('../reddit_mood_bot')
+from Scripts.database.query_executors import db_execution_objs as db_func
 
 # !flask/bin/python
 from flask import Flask, jsonify
 
 app = Flask(__name__)
-cursor = postsql_db_funcs.get_db_funct_object()[0]
+cursor = db_func.get_db_funct_object()[0]
 
 
 def get_json_form(subred):
